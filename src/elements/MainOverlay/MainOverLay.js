@@ -1,54 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import {Items} from "../../components/items";
+import React from 'react';
+import {Header} from "../Header";
+import {Footer} from "../Footer";
+import styles from "./MainOverlay.module.css";
+import {MainRoutes} from "../../Routing/MainRoutes";
 
 const MainOverLay = () => {
 
-  const [items, setItems] = useState([]);
+    return (
+        <div className={styles.mainOverlay}>
+            <header>
+                <Header/>
+            </header>
 
+            <main>
+                <MainRoutes/>
+            </main>
 
-  useEffect( () => {
-    fetch(endUrl)
-        .then(value => value.json())
-        // .then(value => console.log(value))
-        .then(value => setItems(value))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-
-  const queries = {
-    q: 'ipsum',
-    _sort: 'title',
-    _order: 'desc',
-    _page: '1',
-    _limit: '10'
-  };
-
-  const params = new URLSearchParams(queries);
-
-
-  const baseUrl = 'https://jsonplaceholder.typicode.com';
-  const postUrl = new URL('posts', baseUrl);
-
-  postUrl.search = params.toString();
-  // https://jsonplaceholder.typicode.com/posts?q=ipsum&_sort=title&_order=desc&_page=1&_limit=10
-  // https://jsonplaceholder.typicode.com/posts?q=ipsum&_sort=title&_order=desc&_page=1&_limit=10
-
-  const endUrl = postUrl.toString();
-  //{/*{endUrl}*/}
-  //{/*{postUrl.toString()} <br/> <br/><br/><br/>*/}
-
-
-
-
-  return (
-    <div>
-      {
-        <Items
-            items = {items}
-        />
-      }
-    </div>
-  )
+            <footer>
+                <Footer/>
+            </footer>
+        </div>
+    )
 }
 
-export {MainOverLay};
+export {MainOverLay}

@@ -1,4 +1,5 @@
 import React from 'react';
+import {MainPage} from "./pages/MainPage";
 import {MainOverLay} from "./elements/MainOverlay";
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
 
     return (
         <div>
+            {/*<MainPage/>*/}
             <MainOverLay/>
         </div>
     )

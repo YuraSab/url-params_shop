@@ -1,0 +1,33 @@
+.mainOverlay {
+    display: grid;
+    /*1070*/
+
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 120px 1fr 150px;
+
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+
+
+}
+
+
+header{
+    grid-area: header;
+    /*border-bottom-right-radius: 2px;*/
+    /*border-bottom-left-radius: 2px;*/
+}
+
+main{
+    grid-area: main;
+    min-height: 700px;
+}
+
+footer{
+    grid-area: footer;
+    background: mediumslateblue;
+
+}

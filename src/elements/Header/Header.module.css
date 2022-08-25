@@ -1,0 +1,42 @@
+.rowDivka{
+    display: flex;
+    /*flex-direction: row;*/
+    /*justify-items: start;*/
+    /*align-items: center;*/
+
+    background: mediumslateblue;
+    padding-left: 75px;
+
+}
+
+
+.divka{
+    margin-left: 75px;
+    height: 120px;
+    width: 240px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divka:hover{
+    background: mediumpurple;
+    margin-left: 75px;
+    height: 120px;
+    width: 240px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.lina{
+    font-weight: bold;
+    font-size: 25px;
+    color: powderblue;
+    text-decoration: none;
+}
+
+
