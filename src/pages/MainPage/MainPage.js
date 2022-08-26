@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Items} from "../../components/items";
+import {logDOM} from "@testing-library/react";
+import styles from "./MinPage.module.css";
 
 const MainPage = () => {
 
@@ -10,15 +12,16 @@ const MainPage = () => {
 
     const [sortType, setSortType] = useState('inc');
 
+    const [limit, setLimit] = useState(20);
 
 
     useEffect(() => {
         fetch(endUrl)
             .then(value => value.json())
-            // .then(value => console.log(value))
             .then(value => setItems(value))
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchWord, sortType]);
+    }, [searchWord, sortType, limit]);
 
 
     const queries = {
@@ -26,7 +29,7 @@ const MainPage = () => {
         _sort: 'title',
         _order: sortType,
         // _page: '1',
-        // _limit: '10'
+        _limit: limit
     };
     // debugger;
 
@@ -50,44 +53,57 @@ const MainPage = () => {
     const searchRef = React.createRef();
 
     const changedSearchWord = (e) => {
-        console.log(e);
+        // console.log(e);
         const eValue = e.target.value;
         // setSearchWord(eValue);
         setSearchWord(eValue);
     }
 
 
-
-
-
-
     const changeSortType = (e) => {
         e.preventDefault();
-        if (sortType == 'desc'){
+        if (sortType == 'desc') {
             setSortType('inc')
-        }else {
+        } else {
             setSortType('desc')
         }
     }
 
+    const showMore = () => {
+        setLimit(prevState => prevState += 20);
+    }
 
+    const hide = () => {
+        setLimit(20);
+    }
 
     return (
         <div>
-                <form>
-                    <label>Search</label>
-                    {/*<input ref={searchRef} onChange={(e)=> changedSearchWord(e)} />*/}
-                    <input ref={searchRef} onChange={changedSearchWord} />
+            <form>
+                <label>Search</label>
+                {/*<input ref={searchRef} onChange={(e)=> changedSearchWord(e)} />*/}
+                <input className={styles.searchHolder} ref={searchRef} onChange={changedSearchWord}/>
 
-                    <button onClick={changeSortType}>{sortType === 'inc' ? 'Inc' : 'Desc'}</button>
-                </form>
+                <button className={styles.toggle}
+                        onClick={changeSortType}>{sortType === 'inc' ? 'Inc' : 'Desc'}</button>
+            </form>
 
 
+            <Items
+                items={items}
+            />
 
+            {
+                items.length < 20 ? (
+                    <div></div>
+                ) : (
+                    <div>
+                        <button className={styles.buttonMore} onClick={showMore}>Show more</button>
+                        <button className={styles.buttonMore} onClick={hide}>Hide</button>
+                    </div>
+                )
+            }
 
-                <Items
-                    items={items}
-                />
 
         </div>
     )
