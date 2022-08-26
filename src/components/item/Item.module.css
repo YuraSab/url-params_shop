@@ -1,0 +1,22 @@
+.mainDiv{
+    height: 75px;
+    line-height: 75px;
+    width: 100vh;
+}
+
+
+.divLink{
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+
+.mainDiv:hover{
+    width: 100vh;
+    height: 75px;
+    line-height: 75px;
+    background: lightblue;
+}

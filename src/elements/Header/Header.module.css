@@ -11,7 +11,7 @@
 
 
 .divka{
-    margin-left: 75px;
+    /*margin-left: 75px;*/
     height: 120px;
     width: 240px;
 
@@ -22,7 +22,7 @@
 
 .divka:hover{
     background: mediumpurple;
-    margin-left: 75px;
+    /*margin-left: 75px;*/
     height: 120px;
     width: 240px;
 

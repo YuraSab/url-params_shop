@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from "react-router-dom";
+import styles from "./Item.module.css";
 
 const Item = (props) => {
 
@@ -12,12 +14,13 @@ const Item = (props) => {
     // rating
 
 
-
-  return (
-    <div>
-        <h2>{item.title}</h2>
-    </div>
-  )
+    return (
+        <Link className={styles.divLink} to={`${item.id}`}>
+            <div className={styles.mainDiv}>
+                {item.title}
+            </div>
+        </Link>
+    )
 }
 
-export { Item }
+export {Item}
